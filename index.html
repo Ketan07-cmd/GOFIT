@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GOFIT - AI-Powered Fitness Coach</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+        }
+
+        header {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input,
+        select,
+        button {
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to GOFIT</h1>
+        <p>Your AI-Powered Fitness Coach</p>
+    </header>
+
+    <section>
+        <h2>Sign Up</h2>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" placeholder="Enter your first name" />
+
+        <label for="dob">Date of Birth:</label>
+        <input type="text" id="dob" placeholder="Enter your date of birth (YYYY-MM-DD)" />
+
+        <label for="gender">Gender:</label>
+        <select id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="userType">Are you a:</label>
+        <select id="userType">
+            <option value="college">College Student</option>
+            <option value="school">School Student</option>
+            <option value="job">Daily Job Worker</option>
+        </select>
+
+        <label for="workoutRoutine">Workout Routine:</label>
+        <select id="workoutRoutine">
+            <option value="daily">Daily</option>
+            <option value="weekly">3-4 Times a Week</option>
+        </select>
+
+        <label for="calories">Daily Calorie Intake (Kcal):</label>
+        <input type="number" id="calories" placeholder="Enter your calorie intake" />
+
+        <button onclick="generateWorkoutPlan()">Get Your Personalized Workout Plan</button>
+    </section>
+
+    <section id="planSection" style="display:none;">
+        <h2>Your Personalized Workout Plan</h2>
+        <p id="planOutput">Your customized plan will be displayed here.</p>
+    </section>
+
+    <script>
+        function generateWorkoutPlan() {
+            const name = document.getElementById('firstName').value;
+            const workoutRoutine = document.getElementById('workoutRoutine').value;
+            const calories = document.getElementById('calories').value;
+
+            if (!name || !calories) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const planMessage = `Hello ${name}, based on your routine of ${workoutRoutine} workouts and ${calories} Kcal intake, we have prepared a personalized fitness plan for you!`;
+            document.getElementById('planOutput').textContent = planMessage;
+            document.getElementById('planSection').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
